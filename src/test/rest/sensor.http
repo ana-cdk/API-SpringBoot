@@ -1,0 +1,21 @@
+@URL=http://localhost:8081/sensor
+
+
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome": "HUDUHAUS",
+    "tipo": "eaff",
+    "idDispositivo": 1
+}
+
+
+
+### GET ALL
+GET {{URL}}
+
+
+### GET BY ID
+GET {{URL}}/1

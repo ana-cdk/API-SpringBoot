@@ -1,0 +1,14 @@
+@URL=http://localhost:8081/gateway
+
+
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome": "gateway2",
+    "descricao": "bdauwhdwhuwd",
+    "endereco": "jjjdwhjhj",
+    "idPessoa": 1,
+    "dispositivo": 1
+}

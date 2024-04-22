@@ -1,0 +1,15 @@
+@URL=http://localhost:8081/leitura
+
+
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "valor": "0",
+    "data": "2022-04-18",
+    "idSensor": 1
+}
+
+### GET BY ID
+GET {{URL}}/1

@@ -1,0 +1,18 @@
+@URL=http://localhost:8081/atuador
+
+
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome": "HUDUHAUS",
+    "idDispositivo": 1
+}
+
+### GET ALL
+GET {{URL}}
+
+
+### GET BY ID
+GET {{URL}}/1

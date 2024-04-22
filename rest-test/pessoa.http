@@ -1,0 +1,23 @@
+@BASE=http://localhost:8081/pessoa
+
+###Obter uma pessoa
+GET {{BASE}}/1
+
+###Criar uma pessoa
+POST {{BASE}}
+Content-Type: application/json
+
+{
+    "nome": "HUDUHHAUS",
+    "email": "dhisheuhue",
+    "senha": "123"
+}
+
+###Obter todas as pessoas
+GET {{BASE}}
+
+###Atualizar uma pessoa
+PUT {{BASE}}/1
+
+###Deletar uma pessoa
+DELETE {{BASE}}/1

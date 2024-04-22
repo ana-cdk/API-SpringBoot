@@ -1,0 +1,18 @@
+@URL=http://localhost:8081/dispositivo
+
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome":"hfbehfabh",
+    "descricao": "dusahwuha",
+    "localizacao":"fefesfe",
+    "endereco":"udhaueaf",
+    "idGateway": 1,
+    "sensor":1,
+    "atuador":1
+}
+
+### GET BY ID
+GET {{URL}}/1
