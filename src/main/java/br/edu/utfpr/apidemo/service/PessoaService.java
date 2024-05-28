@@ -59,5 +59,9 @@ public class PessoaService {
         }
         pessoaRepository.delete(res.get());
     }
+    
+    public Optional<Pessoa> findByEmail(String email) {
+        return pessoaRepository.findByEmail(email);
+    }
 
 }

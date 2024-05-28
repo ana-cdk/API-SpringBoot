@@ -4,11 +4,11 @@
 ### CREATE
 POST {{URL}}
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VyZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTcxNjkzMjEyNCwiZXhwIjoxNzE2OTY4MTI0LCJpc3MiOiJVVEZQUiJ9.63HHQl7SzewnyE46YMF3BXvcWa300Vq_WIOVOCg_CTc
 
 {
     "nome": "gateway2",
     "descricao": "bdauwhdwhuwd",
     "endereco": "jjjdwhjhj",
-    "idPessoa": 1,
-    "dispositivo": 1
+    "idPessoa": 1
 }

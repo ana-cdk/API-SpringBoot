@@ -12,7 +12,6 @@ import br.edu.utfpr.apidemo.exceptions.NotFoundException;
 import br.edu.utfpr.apidemo.model.Dispositivo;
 import br.edu.utfpr.apidemo.repository.DispositivoRepository;
 import br.edu.utfpr.apidemo.repository.GatewayRepository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DispositivoService {

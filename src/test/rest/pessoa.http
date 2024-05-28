@@ -6,10 +6,9 @@ POST {{URL}}
 Content-Type: application/json
 
 {
-    "nome": "HUDUHAUS",
-    "email": "dhifkhefuhue",
-    "senha": "123",
-    "gateway": 1
+    "nome": "ana",
+    "email": "a@gmail.com",
+    "senha": "123"
 }
 
 ### GET ALL

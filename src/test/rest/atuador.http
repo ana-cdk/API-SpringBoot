@@ -4,6 +4,7 @@
 ### CREATE
 POST {{URL}}
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VyZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTcxNjkzMjEyNCwiZXhwIjoxNzE2OTY4MTI0LCJpc3MiOiJVVEZQUiJ9.63HHQl7SzewnyE46YMF3BXvcWa300Vq_WIOVOCg_CTc
 
 {
     "nome": "HUDUHAUS",
@@ -12,7 +13,10 @@ Content-Type: application/json
 
 ### GET ALL
 GET {{URL}}
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VyZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTcxNjkzMjEyNCwiZXhwIjoxNzE2OTY4MTI0LCJpc3MiOiJVVEZQUiJ9.63HHQl7SzewnyE46YMF3BXvcWa300Vq_WIOVOCg_CTc
+
 
 
 ### GET BY ID
 GET {{URL}}/1
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VyZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTcxNjkzMjEyNCwiZXhwIjoxNzE2OTY4MTI0LCJpc3MiOiJVVEZQUiJ9.63HHQl7SzewnyE46YMF3BXvcWa300Vq_WIOVOCg_CTc
