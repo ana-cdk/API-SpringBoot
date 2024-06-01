@@ -37,6 +37,10 @@ public class PessoaService {
         return pessoaRepository.findById(id);
     }
 
+    public Optional<Pessoa> findByEmail(String email) {
+        return pessoaRepository.findByEmail(email);
+    }
+
     public Pessoa update(long id, PessoaDTO dto) throws NotFoundException{
         var res = pessoaRepository.findById(id);
 
@@ -60,8 +64,5 @@ public class PessoaService {
         pessoaRepository.delete(res.get());
     }
     
-    public Optional<Pessoa> findByEmail(String email) {
-        return pessoaRepository.findByEmail(email);
-    }
 
 }

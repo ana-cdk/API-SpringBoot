@@ -6,10 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.utfpr.apidemo.dto.AtuadorDTO;
 import br.edu.utfpr.apidemo.exceptions.NotFoundException;
 import br.edu.utfpr.apidemo.model.Atuador;
+import br.edu.utfpr.apidemo.model.Dispositivo;
 import br.edu.utfpr.apidemo.repository.AtuadorRepository;
 import br.edu.utfpr.apidemo.repository.DispositivoRepository;
 
@@ -22,12 +24,7 @@ public class AtuadorService {
     @Autowired
     private DispositivoRepository dispositivoRepository;
 
-        /**
-     * 
-     * Inserir uma atuador no DB
-     * @return
-         * @throws NotFoundException 
-     */
+    @Transactional
     public Atuador create(AtuadorDTO dto) throws NotFoundException {
         var atuador = new Atuador();
         BeanUtils.copyProperties(dto, atuador);
@@ -38,7 +35,6 @@ public class AtuadorService {
         else
             throw new NotFoundException("Dispositivo não existe");
 
-        // Persistir no DB
         return atuadorRepository.save(atuador);
     }
 
@@ -50,6 +46,7 @@ public class AtuadorService {
         return atuadorRepository.findById(id);
     }
 
+    @Transactional
     public Atuador update(long id, AtuadorDTO dto) throws NotFoundException{
         var res = atuadorRepository.findById(id);
 
@@ -63,14 +60,22 @@ public class AtuadorService {
         return atuadorRepository.save(atuador);
     }
 
+    @Transactional
     public void delete(long id) throws NotFoundException {
         var res = atuadorRepository.findById(id);
 
         if(res.isEmpty()){
             throw new NotFoundException("Atuador " + id + " não existe");
         }
-        atuadorRepository.delete(res.get());
+        Atuador atuador = res.get();
+        
+        if (atuador.getDispositivo() != null) {
+            atuador.getDispositivo().getAtuadores().remove(atuador);
+        }
+
+        atuadorRepository.delete(atuador);
     }
+
 
     public List<Atuador> findAtuadorByDispositivoId(long idDispositivo) {
         return atuadorRepository.findByDispositivoIdDispositivo(idDispositivo);

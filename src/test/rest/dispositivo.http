@@ -2,11 +2,12 @@
 
 ### CREATE
 POST {{URL}}
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VySWQiOiI0IiwidXNlcm5hbWUiOiJhbmEiLCJpYXQiOjE3MTcxMzAzNzQsImV4cCI6MTcxNzE2NjM3NCwiaXNzIjoiVVRGUFIifQ.4xSWQraTHoMy7SfV3lqKuZJ-uX__IZZl7tQda3Ubjao
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VyZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTcxNjkzMjEyNCwiZXhwIjoxNzE2OTY4MTI0LCJpc3MiOiJVVEZQUiJ9.63HHQl7SzewnyE46YMF3BXvcWa300Vq_WIOVOCg_CTc
+
 
 {
-    "nome":"hfbehfabh",
+    "nome":"dispositivo 3",
     "descricao": "dusahwuha",
     "localizacao":"fefesfe",
     "endereco":"udhaueaf",
@@ -14,5 +15,5 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aG
 }
 
 ### GET BY ID
-GET {{URL}}/1
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VyZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTcxNjkzMjEyNCwiZXhwIjoxNzE2OTY4MTI0LCJpc3MiOiJVVEZQUiJ9.63HHQl7SzewnyE46YMF3BXvcWa300Vq_WIOVOCg_CTc
+GET {{URL}}/3
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VySWQiOiIxIiwidXNlcm5hbWUiOiJhbmEiLCJpYXQiOjE3MTcxODcwMjIsImV4cCI6MTcxNzIyMzAyMiwiaXNzIjoiVVRGUFIifQ.oEHn7buRjSSOUlv4jjYymjcbI3Db3zWRNP4DLWgd7U8

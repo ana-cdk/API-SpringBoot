@@ -12,6 +12,7 @@ import br.edu.utfpr.apidemo.exceptions.NotFoundException;
 import br.edu.utfpr.apidemo.model.Dispositivo;
 import br.edu.utfpr.apidemo.repository.DispositivoRepository;
 import br.edu.utfpr.apidemo.repository.GatewayRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class DispositivoService {
@@ -66,14 +67,24 @@ public class DispositivoService {
         return dispositivoRepository.save(dispositivo);
     }
 
+    @Transactional
     public void delete(long id) throws NotFoundException {
         var res = dispositivoRepository.findById(id);
 
-        if(res.isEmpty()){
+        if (res.isEmpty()) {
             throw new NotFoundException("Dispositivo " + id + " não existe");
         }
-        dispositivoRepository.delete(res.get());
+
+        Dispositivo dispositivo = res.get();
+        
+        // Remove o dispositivo da lista de dispositivos do gateway
+        if (dispositivo.getGateway() != null) {
+            dispositivo.getGateway().getDispositivos().remove(dispositivo);
+        }
+
+        dispositivoRepository.delete(dispositivo);
     }
+}
 
 
  /**    @Transactional
@@ -93,4 +104,4 @@ public class DispositivoService {
         return dispositivo;
     }
    */ 
-}
+

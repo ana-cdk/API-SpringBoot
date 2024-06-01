@@ -1,6 +1,6 @@
 package br.edu.utfpr.apidemo.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,9 +28,9 @@ public class Sensor {
 
     @ManyToOne
     @JoinColumn(name = "dispositivo_id")
+    @JsonBackReference
     private Dispositivo dispositivo;
 
-    //@OneToMany(mappedBy = "sensor")
+    //@OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL, orphanRemoval = true)
     //private List<Leitura> leituras;
-
 }

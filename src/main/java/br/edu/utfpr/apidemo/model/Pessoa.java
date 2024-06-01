@@ -29,6 +29,9 @@ public class Pessoa {
     //@OneToMany(mappedBy = "pessoa")
     //private List<Gateway> gateways;
 
+    public Long getIdPessoa() {
+        return idPessoa;
+    }
 }
 
 

@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.utfpr.apidemo.dto.SensorDTO;
 import br.edu.utfpr.apidemo.exceptions.NotFoundException;
+import br.edu.utfpr.apidemo.model.Atuador;
 import br.edu.utfpr.apidemo.model.Sensor;
 import br.edu.utfpr.apidemo.repository.DispositivoRepository;
 import br.edu.utfpr.apidemo.repository.SensorRepository;
@@ -63,13 +65,20 @@ public class SensorService{
         return sensorRepository.save(sensor);
     }
 
+    @Transactional
     public void delete(long id) throws NotFoundException {
         var res = sensorRepository.findById(id);
 
         if(res.isEmpty()){
-            throw new NotFoundException("Pessoa " + id + " não existe");
+            throw new NotFoundException("Sensor " + id + " não existe");
         }
-        sensorRepository.delete(res.get());
+        Sensor sensor = res.get();
+        
+        if (sensor.getDispositivo() != null) {
+            sensor.getDispositivo().getSensores().remove(sensor);
+        }
+
+        sensorRepository.delete(sensor);
     }
 
     public List<Sensor> findSensorByDispositivoId(long idDispositivo) {

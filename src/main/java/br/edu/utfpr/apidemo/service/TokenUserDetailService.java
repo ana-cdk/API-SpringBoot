@@ -8,20 +8,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import br.edu.utfpr.apidemo.model.CustomUserDetails;
 import br.edu.utfpr.apidemo.model.Pessoa;
-
+import br.edu.utfpr.apidemo.repository.PessoaRepository;
 
 @Component
 public class TokenUserDetailService implements UserDetailsService {
     @Autowired
-    private PessoaService pessoaService;
+    private PessoaRepository pessoaRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Pessoa pessoa = pessoaService.findByEmail(email)
+        Pessoa pessoa = pessoaRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return new org.springframework.security.core.userdetails.User(
-                pessoa.getEmail(), pessoa.getSenha(), new ArrayList<>()
-        );
+        return new CustomUserDetails(pessoa.getEmail(), pessoa.getSenha(), pessoa.getIdPessoa());
     }
 }

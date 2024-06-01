@@ -1,9 +1,13 @@
 package br.edu.utfpr.apidemo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,13 +40,14 @@ public class Dispositivo {
 
     @ManyToOne
     @JoinColumn(name = "gateway_id")
+    @JsonBackReference
     private Gateway gateway;
 
-    //@OneToMany(mappedBy = "dispositivo")
-    //private List<Sensor> sensores;
+    @OneToMany(mappedBy = "dispositivo", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Sensor> sensores;
 
-   //@OneToMany(mappedBy = "dispositivo")
-    //private List<Atuador> atuadores;
-
-
+    @OneToMany(mappedBy = "dispositivo", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Atuador> atuadores;
 }

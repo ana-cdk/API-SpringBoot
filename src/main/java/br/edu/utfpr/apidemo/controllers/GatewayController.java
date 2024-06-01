@@ -24,60 +24,52 @@ import br.edu.utfpr.apidemo.service.GatewayService;
 public class GatewayController {
     @Autowired
     private GatewayService gatewayService;
-    /**
-     * Obter 1 pessoa pelo ID
-     */
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> GetById(@PathVariable("id") long id) {
        var gateway = gatewayService.getById(id);
 
        return gateway.isPresent()
             ? ResponseEntity.ok().body(gateway.get())
-            : ResponseEntity.notFound().build();
+            : ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"message\":\"Gateway não encontrado\"}");
     }
 
-    /**
-     *  Obter todos as pessoas do DB
-     */
     @GetMapping
-    public List<Gateway> getAll() {
-        return gatewayService.getAll();
+    public ResponseEntity<List<Gateway>> getAll() {
+        List<Gateway> gateways = gatewayService.getAll();
+        return ResponseEntity.ok(gateways);
     }
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody GatewayDTO dto) {
         try {
             var res = gatewayService.create(dto);
-
-            // Seta o status para 201 (created) e devolve o objeto pessoa em json
             return ResponseEntity.status(HttpStatus.CREATED).body(res);
         } catch (Exception ex) {
-            // Seta o status para 400 (bad request) e devolve a mensagem de exceção lançada
-            return ResponseEntity.badRequest().body(ex.getMessage());
+            return ResponseEntity.badRequest().body("{\"message\":\"" + ex.getMessage() + "\"}");
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable("id") long id,
-        @RequestBody GatewayDTO dto) {
-            try {
+    public ResponseEntity<Object> update(@PathVariable("id") long id, @RequestBody GatewayDTO dto) {
+        try {
             return ResponseEntity.ok().body(gatewayService.update(id, dto));
-            }catch(NotFoundException ex) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-            }catch(Exception ex) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-            }
+        } catch (NotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"message\":\"" + ex.getMessage() + "\"}");
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"" + ex.getMessage() + "\"}");
         }
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") long id){
         try {
             gatewayService.delete(id);
             return ResponseEntity.ok().build();
-            } catch(NotFoundException e) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-            }catch(Exception e) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-            }
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"message\":\"" + e.getMessage() + "\"}");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"" + e.getMessage() + "\"}");
         }
+    }
 }
