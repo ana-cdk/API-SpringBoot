@@ -34,16 +34,15 @@ public class LeituraService {
         var leitura = new Leitura();
         BeanUtils.copyProperties(dto, leitura);
 
-         // Convertendo a string da data para LocalDate
-        LocalDate data = LocalDate.parse(dto.getData(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        leitura.setData(data);
+        // Usando a data atual no momento da criação
+        leitura.setData(LocalDate.now());
         
         var sensor = sensorRepository.findById(dto.idSensor());
-        if(sensor.isPresent())
+        if(sensor.isPresent()) {
             leitura.setSensor(sensor.get());
-        else
+        } else {
             throw new NotFoundException("Sensor não existe");
-
+        }
 
         // Persistir no DB
         return leituraRepository.save(leitura);

@@ -6,11 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record LeituraDTO(
     @NotBlank String valor,
-    @NotNull @Min(1) long idSensor,
-    @NotBlank String data) {
+    @NotNull @Min(1) long idSensor) {
 
-        // Getter para o campo data
-        public String getData() {
-            return data;
-        }
+
 }
