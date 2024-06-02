@@ -1,7 +1,6 @@
 package br.edu.utfpr.apidemo.service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,18 +23,17 @@ public class LeituraService {
     @Autowired
     private SensorRepository sensorRepository;
 
-        /**
-     * 
-     * Inserir uma dispositivo no DB
+    /**
+     * Inserir uma leitura no DB
      * @return
-         * @throws NotFoundException 
+     * @throws NotFoundException 
      */
     public Leitura create(LeituraDTO dto) throws NotFoundException {
         var leitura = new Leitura();
         BeanUtils.copyProperties(dto, leitura);
 
-        // Usando a data atual no momento da criação
-        leitura.setData(LocalDate.now());
+        // Usando a data e hora atual no momento da criação
+        leitura.setData(LocalDateTime.now());
         
         var sensor = sensorRepository.findById(dto.idSensor());
         if(sensor.isPresent()) {

@@ -1,6 +1,6 @@
 package br.edu.utfpr.apidemo.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+
 @Data
 @Entity
 @Table(name = "tb_leitura")
@@ -26,7 +27,7 @@ public class Leitura {
     private String valor;
 
     @Column(nullable = false)
-    private LocalDate data;
+    private LocalDateTime data;
 
     @ManyToOne
     @JoinColumn(name = "sensor_id")
