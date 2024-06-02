@@ -5,11 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import br.edu.utfpr.apidemo.dto.GatewayDTO;
 import br.edu.utfpr.apidemo.exceptions.NotFoundException;
 import br.edu.utfpr.apidemo.model.Gateway;
@@ -80,6 +76,8 @@ public class GatewayService {
     public List<Gateway> findGatewayByPessoaId(long idPessoa) {
         return gatewayRepository.findByPessoaIdPessoa(idPessoa);
     }
+
+    
 
 }
 

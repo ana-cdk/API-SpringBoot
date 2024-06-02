@@ -84,6 +84,11 @@ public class DispositivoService {
 
         dispositivoRepository.delete(dispositivo);
     }
+
+    public List<Dispositivo> findByUserId(Long userId) {
+        return dispositivoRepository.findByGatewayPessoaId(userId);
+    }
+    
 }
 
 

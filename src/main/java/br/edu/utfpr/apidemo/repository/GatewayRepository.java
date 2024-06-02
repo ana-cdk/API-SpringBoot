@@ -8,6 +8,5 @@ import br.edu.utfpr.apidemo.model.Gateway;
 
 public interface GatewayRepository extends JpaRepository<Gateway, Long> {
     List<Gateway> findByPessoaIdPessoa(long idPessoa);
-
 }
 

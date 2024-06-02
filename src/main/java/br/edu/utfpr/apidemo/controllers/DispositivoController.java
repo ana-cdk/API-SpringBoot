@@ -80,4 +80,13 @@ public class DispositivoController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
             }
         }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Dispositivo>> getDevicesByUserId(@PathVariable Long userId) {
+        List<Dispositivo> dispositivos = dispositivoService.findByUserId(userId);
+        return ResponseEntity.ok(dispositivos);
+}
+
+
+        
 }
