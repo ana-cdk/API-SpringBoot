@@ -9,4 +9,9 @@ public record PessoaDTO(
     String email, 
     @NotBlank String senha) {
         
+
+    public String getSenha() {
+        return senha;
+    }
+        
 }

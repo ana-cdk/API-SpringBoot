@@ -73,6 +73,13 @@ public class GatewayController {
         }
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Gateway>> getByUserId(@PathVariable("userId") long userId) {
+        List<Gateway> gateways = gatewayService.findGatewayByPessoaId(userId);
+    return ResponseEntity.ok(gateways);
+}
+
+
     
     
 }

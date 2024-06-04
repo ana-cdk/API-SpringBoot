@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.edu.utfpr.apidemo.dto.PessoaDTO;
@@ -16,6 +17,9 @@ import br.edu.utfpr.apidemo.repository.PessoaRepository;;
 public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
+
+     @Autowired
+    private PasswordEncoder passwordEncoder;
     /**
      * 
      * Inserir uma pessoa no DB
@@ -24,6 +28,8 @@ public class PessoaService {
     public Pessoa create(PessoaDTO dto) {
         var pessoa = new Pessoa();
         BeanUtils.copyProperties(dto, pessoa);
+
+        pessoa.setSenha(passwordEncoder.encode(dto.getSenha()));
 
         // Persistir no DB
         return pessoaRepository.save(pessoa);
