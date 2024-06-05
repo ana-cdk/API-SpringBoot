@@ -1,4 +1,4 @@
-@URL=http://localhost:8081/leitura
+@URL=http://localhost:8083/leitura
 
 
 ### CREATE
@@ -14,3 +14,8 @@ Content-Type: application/json
 ### GET BY ID
 GET {{URL}}/3
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VySWQiOiIxIiwidXNlcm5hbWUiOiJhbmEiLCJpYXQiOjE3MTcyODU2NjksImV4cCI6MTcxNzMyMTY2OSwiaXNzIjoiVVRGUFIifQ.27TPTSlmg7hSQe7_YwOusXKoweCPnxqS6Tm0oFiVFwM
+
+
+### DELETE
+DELETE {{URL}}/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VySWQiOiIxIiwidXNlcm5hbWUiOiJhbmEiLCJpYXQiOjE3MTc1NDQ1OTIsImV4cCI6MTcxNzU4MDU5MiwiaXNzIjoiVVRGUFIifQ.DCSBb7-Ed0xRa22UeVhf2IU0fgeedOoY2n07RvHj5Jc

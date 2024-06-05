@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import br.edu.utfpr.apidemo.dto.LeituraDTO;
 import br.edu.utfpr.apidemo.exceptions.NotFoundException;
+import br.edu.utfpr.apidemo.model.Dispositivo;
 import br.edu.utfpr.apidemo.model.Leitura;
 import br.edu.utfpr.apidemo.repository.LeituraRepository;
 import br.edu.utfpr.apidemo.repository.SensorRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class LeituraService {
@@ -68,14 +70,24 @@ public class LeituraService {
         return leituraRepository.save(leitura);
     }
 
+    @Transactional
     public void delete(long id) throws NotFoundException {
         var res = leituraRepository.findById(id);
 
-        if(res.isEmpty()){
-            throw new NotFoundException("Gateway " + id + " não existe");
+        if (res.isEmpty()) {
+            throw new NotFoundException("Leitura " + id + " não existe");
         }
-        leituraRepository.delete(res.get());
+
+        Leitura leitura = res.get();
+        
+        // Remove a leitura da lista de leituras do sensor
+        if (leitura.getSensor() != null) {
+            leitura.getSensor().getLeituras().remove(leitura);
+        }
+
+        leituraRepository.delete(leitura);
     }
+
 
     public List<Leitura> findLeituraBySensorId(long idSensor) {
         return leituraRepository.findBySensorIdSensor(idSensor);

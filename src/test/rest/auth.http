@@ -1,4 +1,4 @@
-@URL = http://localhost:8081/auth
+@URL = http://localhost:8083/auth
 
 POST {{URL}}
 Content-Type: application/json
